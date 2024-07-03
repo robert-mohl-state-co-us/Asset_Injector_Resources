@@ -1,7 +1,7 @@
 //H1 Header Fix
 //v1.5 - Avocado - Skipped over Drupal editing headers.
 
-console.log("Fix version 1.5 to correct issues introduced by Tyler including hidden headings, improper nesting, multiple h1s, etc.")
+//console.log("Fix version 1.5 to correct issues introduced by Tyler including hidden headings, improper nesting, multiple h1s, etc.")
 
   var headingLevelOneCount = document.getElementsByTagName("h1");
 
@@ -11,13 +11,13 @@ console.log("Fix version 1.5 to correct issues introduced by Tyler including hid
 
 		totalH1s = headingLevelOneCount.length;
 
-		console.log("H1s found on page: "+headingLevelOneCount.length);
+		//console.log("H1s found on page: "+headingLevelOneCount.length);
 
 		hiddenH1s = document.querySelectorAll('.page-node-type-landing-page h1');
 
 		if(typeof hiddenH1s !== 'undefined' && hiddenH1s !== null && hiddenH1s.length > 0 ) { 
 
-				console.log("Removed first hidden h1: "+hiddenH1s[0].innerHTML);
+				//console.log("Removed first hidden h1: "+hiddenH1s[0].innerHTML);
 
 				hiddenH1s[0].remove(); 
 
@@ -29,13 +29,13 @@ console.log("Fix version 1.5 to correct issues introduced by Tyler including hid
 
 		if(typeof badH1s !== 'undefined' && badH1s !== null && badH1s.length > 0) {
 
-			console.log("Improper H1s found: "+badH1s.length);
+			//console.log("Improper H1s found: "+badH1s.length);
 
 			var badH1array = [...badH1s];
 
 			badH1array.forEach(badH1 => {
 
-				console.log("Row title H1 converted to H2: "+badH1.innerHTML);
+				//console.log("Row title H1 converted to H2: "+badH1.innerHTML);
 
 				badH1.outerHTML = '<h2>' + badH1.innerHTML + '</h2>';
 
@@ -65,11 +65,11 @@ console.log("Fix version 1.5 to correct issues introduced by Tyler including hid
 
 		if(typeof badJumboHeading !== 'undefined' && badJumboHeading !== null && badJumboHeading.length > 0) {
 
-			console.log("Jumbotron heading issues on page: "+badJumboHeading.length);
+			//console.log("Jumbotron heading issues on page: "+badJumboHeading.length);
 
 			badJumboHeading[0].outerHTML = '<h1 style="font-size:calc(1.85rem + 1vmin)">' + badJumboHeading[0].innerHTML + '</h1>';
 
-			console.log("Jumbotron heading issue resolved (h2->h1) with inline font size applied."); // class would be better but application is spotty
+			//console.log("Jumbotron heading issue resolved (h2->h1) with inline font size applied."); // class would be better but application is spotty
 
 			totalH1s = 1;
 
@@ -80,7 +80,7 @@ console.log("Fix version 1.5 to correct issues introduced by Tyler including hid
 	//IF NO h1 headers exist we must create them
 	if(totalH1s == 0) {
 
-		console.log("No H1s found on page, attempting first h2 conversion.");
+		//console.log("No H1s found on page, attempting first h2 conversion.");
 
 		var headingLevelTwoCount = document.getElementsByTagName("h2");
 
@@ -101,7 +101,7 @@ console.log("Fix version 1.5 to correct issues introduced by Tyler including hid
 		   
 			} //END LOOP
 		
-			console.log("First H2 converted to H1: "+firstLevelTwoheading.innerHTML);
+			//console.log("First H2 converted to H1: "+firstLevelTwoheading.innerHTML);
 
 			firstLevelTwoheading.outerHTML = '<h1>' + firstLevelTwoheading.innerHTML + '</h1>';
 
