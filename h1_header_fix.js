@@ -1,6 +1,5 @@
-
 //H1 Header Fix
-//v1.5 - Skipped over Drupal editing headers.
+//v1.5 - Avocado - Skipped over Drupal editing headers.
 
 console.log("Fix version 1.5 to correct issues introduced by Tyler including hidden headings, improper nesting, multiple h1s, etc.")
 
