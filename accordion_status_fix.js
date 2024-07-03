@@ -1,4 +1,10 @@
+//Accordion Status Fix 
+//v1.0 - Atlanta.
 //THIS WORKS AS OF 4-22, but only on a static page, need to run it against actual code.
+//7-3-24 = This looks like it is no longer needed. https://sbg.colorado.gov/salesperson-license-application has correct behavior
+// See also BIT audits - https://docs.google.com/spreadsheets/d/1s12TVLa_KcgDHvhOYsLam08Dkj84R2e-Of_OWZOLLiE/edit?gid=2030393469#gid=2030393469
+
+
 
 $(':button.ckeditor-accordion-toggler').click(function(){
 
@@ -14,15 +20,6 @@ var getHref= button.attr('href');
 
 console.log("getHref is "+ getHref );
 
-/* old code
-
-var formatHref = getHref.substring(1)  //snips of leading #, not needed with jquery
-//console.log("formatted substring is "+ formatHref );
-
-var accordionString = "#"+formatHref
-console.log("accordion string is "+ accordionString);
-*/
-
 var accordion = $(getHref);
 
 
@@ -30,13 +27,14 @@ var accordion = $(getHref);
 var accordionClass = accordion.attr('class');
 var accordionWiid = accordion.attr('wiid');
 
+/*
 console.log("accordion class is "+ accordionClass);
 console.log("accordion wiid is "+ accordionWiid);
-
+*/
 
 
 /*
-Dont do anything to style of the dd, just check to see if aria-expanded="true" exists, If doesnt *because this will be the first time tit opens, then set it to true. Otherwise just toggle between the two states. While we are at it, do the same to the controlling button.
+Do not do anything to style of the dd, just check to see if aria-expanded="false" which is the current default. Otherwise just toggle between the two states. While we are at it, do the same to the controlling button.
 */
 
 if (accordion.attr('aria-expanded')==='false') {
