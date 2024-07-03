@@ -1,3 +1,7 @@
+//Aria Hidden Fix
+//v1.0 - Aragorn. Downloaded from AIR website
+
+
 hiddenPaginationValues = document.querySelectorAll('.pager-nav a span');
 
 		if(typeof hiddenPaginationValues !== 'undefined' && hiddenPaginationValues !== null && hiddenPaginationValues.length > 0 ) { 
