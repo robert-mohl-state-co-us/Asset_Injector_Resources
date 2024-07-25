@@ -1,8 +1,7 @@
 //Aria Hidden Fix
-//v1.0 - Aragorn. Downloaded from AIR website
+//v1.1 - Bilbo. Updated selector to match new boostrap code
 
-
-hiddenPaginationValues = document.querySelectorAll('.pager-nav a span');
+hiddenPaginationValues = document.querySelectorAll('.pager__item a span');
 
 		if(typeof hiddenPaginationValues !== 'undefined' && hiddenPaginationValues !== null && hiddenPaginationValues.length > 0 ) { 
 
