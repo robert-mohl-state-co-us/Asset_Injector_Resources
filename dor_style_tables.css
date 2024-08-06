@@ -1,0 +1,9 @@
+/* ADDS VERTICAL RULES AND ALTERNATING COLORS TO ALL TABLES FOR BETTER READABILITY */
+/* !important declaration needed to ovverride _calendar.scss conflict */
+/* Bravo version, exempted Drupal controls - 8-6-24 */
+/* Class selector .main-contianer selects content but does not affect Drupal editing window */
+
+.main-container table {border: 2px solid black;}
+.main-container th { border-left:1px solid black; }
+.main-container td { border-left:1px solid black; }
+.main-container tr:nth-child(even) {background-color: #DCE5EF !important;}
