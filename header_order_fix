@@ -1,0 +1,116 @@
+//Eliminate header gaps
+// 1.0 - Arapahoe 
+//Test page - https://dmv.test.colorado.gov/taxonomy/term/100014?page=3
+
+
+//NOTES- Maybe throw on special styles for H6 elements found on some press release pages?
+// h6 elements on press releases are currently font size 21. As h3 elemetns they are font-size 34.
+
+//Eliminate header gaps
+// 1.0 - Arapahoe 
+//Test page - https://dmv.test.colorado.gov/taxonomy/term/100014?page=3
+
+
+
+/* 
+PSEUDOCODE
+Get all headers, iterate over the list and compare them.
+Lots of kludge to compare h2s and h3s
+If there is a gap, promote the smaller header by using the replaceHeader function.
+*/
+
+//console.log("Let's eliminate header gaps");
+
+var allHeaders = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+if (typeof allHeaders !== 'undefined' && allHeaders !== null && allHeaders.length > 0) {
+
+    //console.log("Count of headers is " + allHeaders.length);
+
+    //Cast our collection to an array and loop it
+
+    var allHeadersArray = [...allHeaders];
+
+    var index = 0;
+
+    allHeadersArray.forEach(checkHeader => {
+
+        //SKIP THE ZERO LOOP SO WE CAN COMPARE
+        if (index >= 1) {
+
+            var nodeName = allHeadersArray[index].nodeName; //This gives us h1, h2,h3
+
+            var currentHeader = allHeadersArray[index].nodeName;
+
+            var previousHeader = allHeadersArray[index - 1].nodeName;
+
+            //console.log("the " + index + " header is " + currentHeader);
+            //console.log("the previous header is " + previousHeader);
+
+            var currentHeaderLevel = currentHeader.slice(-1);
+            var previousHeaderLevel = previousHeader.slice(-1);
+
+            //if currentHeaderLevel level is 1 then don't change anything
+            //we want to promote the current header if the difference is two or more.
+            //we want to set the current header to previous header - 1.
+
+            var difference = currentHeaderLevel - previousHeaderLevel;
+
+            //console.log("the difference  is " + difference);
+
+            if (difference >= 2) {
+
+                //console.log("----------------------------------------");
+                //console.log("*** WHOA NELLY! That's a big difference!");
+                //console.log("the difference  is " + difference);
+
+                var badHeader = document.querySelectorAll("h1, h2, h3, h4, h5, h6")[index];
+
+                //console.log("bad header looks like this " + badHeader.outerHTML);
+
+                //TODO- We must bring the styles over and only change the element type.
+
+                var newHeaderLevel = Number(previousHeaderLevel) + 1;
+                var newHeader = "H" + newHeaderLevel;
+
+                //console.log("Let's make that into a " + newHeader);
+
+                replaceHeader(newHeader, badHeader);
+
+                //badHeader.outerHTML = '<span style="background-color:red;"><'+ newHeader +' class="field-content text-2xl fw-500">'+ badHeader.innerHTML + "</" +newHeader+'></span>';
+
+            } //END DIFFERENCE OF TWO OR MORE CHECK	
+
+        } //END ZERO LOOP CHECK
+
+        index++;
+
+    }); //END HEADER LOOP
+
+} //END NO HEADERS FOUND CHECK
+
+function replaceHeader(newHeader, badHeader) {
+
+    //Copied from https://stackoverflow.com/questions/8584098/how-to-change-an-element-type-using-jquery/8584158#8584158
+	//copies over all attributes and child elements
+
+    var new_element = document.createElement(newHeader),
+        old_attributes = badHeader.attributes,
+        new_attributes = new_element.attributes;
+
+    // copy attributes
+    for (var i = 0, len = old_attributes.length; i < len; i++) {
+        new_attributes.setNamedItem(old_attributes.item(i).cloneNode());
+    }
+
+    // copy child nodes
+    do {
+        new_element.appendChild(badHeader.firstChild);
+    }
+    while (badHeader.firstChild);
+
+    // replace badHeader
+    badHeader.parentNode.replaceChild(new_element, badHeader);
+
+}
+
