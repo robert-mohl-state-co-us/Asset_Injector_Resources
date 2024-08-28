@@ -1,0 +1,17 @@
+/* Accordion Outline Color Override For Better Accessibility Contrast */
+
+/* Current background color is #001970  */
+
+/* TWO DIFFERENT KINDS OF ACCORDION - GET BOTH */
+
+.paragraph--type--bp-accordion .panel .panel-title > button:focus-visible {
+    outline: 2px solid #cc9900 !important;
+    outline-offset: 2px;
+    transition: outline-offset 0.15s linear;
+}
+
+.ckeditor-accordion-container > dl dt a.ckeditor-accordion-toggler:focus-visible, .ckeditor-accordion-container > dl dt button.ckeditor-accordion-toggler:focus-visible {
+    outline: 2px solid #cc9900 !important;
+    outline-offset: 2px;
+    transition: outline-offset 0.15s linear;
+}
