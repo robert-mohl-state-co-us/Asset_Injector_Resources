@@ -1,5 +1,5 @@
 //Clear out empty headers, replace them with p tags to preserve formatting
-//1.3 Bear - Adding onLoad wrapper to delay script execution
+//1.4 Cougar - Need to snipe empty headers containing &nbsp;
 
 //Custom javascript must wait until the page loads to avoid conflict w. Tyler fixes
 window.addEventListener("load", () => {
@@ -32,7 +32,14 @@ window.addEventListener("load", () => {
                 //Replace empty header with empty p tags to preserve formatting.
                 checkHeader.outerHTML = '<p>&nbsp;</p>';
 
-            } //END WHITESPACE HEADER CHECK 
+            } else if (checkHeader.innerHTML == "&nbsp;") {
+                //Check to see if Header contains &nbsp;
+                console.log("Detected &nbsp; Header at " + index + " of " + allHeadersArray.length);
+                console.log("The style of the header is "+checkHeader.className);
+                //Replace empty header with empty p tags to preserve formatting.
+                checkHeader.outerHTML = '<p>&nbsp;</p>';
+
+            }//END WHITESPACE HEADER CHECK 
 
             index++;
         }); //END HEADER LOOP
