@@ -1,0 +1,8 @@
+/* Adds underlines for left-hand navigation menus per BIT audit */
+/* Alpha- 10-29-24- Merge with other underline styles  */
+
+
+.field--name-field-menu-reference-left ul li a {
+	text-decoration:underline !important;
+
+}
